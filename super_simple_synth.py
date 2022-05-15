@@ -2,6 +2,7 @@ import math
 import pyaudio
 import itertools
 import numpy as np
+
 from pygame import midi
 
 BUFFER_SIZE = 256
@@ -27,6 +28,18 @@ def get_samples(notes_dict, num_samples=BUFFER_SIZE):
 midi.init()
 default_id = midi.get_default_input_id()
 midi_input = midi.Input(device_id=default_id)
+
+soundObj = pyaudio.PyAudio()
+
+# Learn what your OS+Hardware can do
+defaultCapability = soundObj.get_default_host_api_info()
+print(defaultCapability)
+
+# See if you can make it do what you want
+isSupported = soundObj.is_format_supported(
+    output_format=pyaudio.paInt16, output_channels=1, rate=44100, output_device=2
+)
+print(isSupported)
 
 stream = pyaudio.PyAudio().open(
     rate=SAMPLE_RATE,
