@@ -61,7 +61,8 @@ try:
             stream.write(samples)
 
         if midi_input.poll():
-            # Add or remove notes from notes_dict
+            # Add or remove notes from notes_dict as keys are depressed or released
+            # notes are keyed by base (non-curved) frequency
             for event in midi_input.read(num_events=16):
                 (status, note, vel, _), _ = event
                 if status == 0x80 and note in notes_dict:

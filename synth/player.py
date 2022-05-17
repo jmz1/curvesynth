@@ -31,6 +31,7 @@ class PolySynth:
     def _get_samples(self, notes_dict):
         # Return samples in int16 format
         samples = []
+        # TODO: can this be replaced with a batched iteration?
         for _ in range(self.num_samples):
             samples.append([next(osc[0]) for _, osc in notes_dict.items()])
         samples = np.array(samples).sum(axis=1) * self.amp_scale
@@ -38,6 +39,7 @@ class PolySynth:
         return samples.reshape(self.num_samples, -1)
 
     def play(self, osc_function, close=False):
+        # extract channel count from sample generator (??!)
         tempcf = osc_function(1, 1, self.sample_rate)
         has_trigger = hasattr(tempcf, "trigger_release")
         tempsm = self._get_samples({-1: [tempcf, False]})

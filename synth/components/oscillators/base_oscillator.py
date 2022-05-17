@@ -9,6 +9,7 @@ class Oscillator(ABC):
         self._amp = amp
         self._phase = phase
         self._sample_rate = sample_rate
+        self._inv_sample_rate = 1.0 / sample_rate
         self._wave_range = wave_range
 
         # Properties that will be changed
