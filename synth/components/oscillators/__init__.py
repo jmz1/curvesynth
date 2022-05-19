@@ -1,6 +1,12 @@
-from .oscillators import SineOscillator
-from .oscillators import SquareOscillator
-from .oscillators import SawtoothOscillator
-from .oscillators import TriangleOscillator
+from .oscillators import (
+    SineOscillator,
+    SquareOscillator,
+    SawtoothOscillator,
+    TriangleOscillator,
+)
 from .modulated_oscillator import ModulatedOscillator
-from .curved_polysin import curve_freqs
+from .curved_polysin_oscillator import (
+    PolySineOscillator,
+    CurvedPolySineOscillator,
+    CurvatureController,
+)

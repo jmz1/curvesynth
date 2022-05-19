@@ -6,7 +6,7 @@ to generate waves of different kinds.
 from collections.abc import Iterable
 
 
-class Chain:
+class Chain(Iterable):
     """
     A component that allows for chaining a single
     generator with multiple modifiers after it.
@@ -70,7 +70,7 @@ class Chain:
         return val
 
 
-class WaveAdder:
+class WaveAdder(Iterable):
     """
     Component that returns the mean of the output
     of multiple generators.

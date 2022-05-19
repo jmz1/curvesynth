@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
+from collections import Iterable
 
 
-class Oscillator(ABC):
+class Oscillator(ABC, Iterable):
     def __init__(
         self, freq=440, phase=0, amp=1, sample_rate=44_100, wave_range=(-1, 1)
     ):
